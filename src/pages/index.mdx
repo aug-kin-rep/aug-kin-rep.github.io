@@ -1,6 +1,6 @@
 ---
 layout: ../layouts/Layout.astro
-title: Research Project Page Template
+title: Integration of Robot and Scene Kinematics for Sequential Mobile Manipulation Planning
 description: Simple project page template for your research paper, built with Astro and Tailwind CSS
 favicon: favicon.svg
 thumbnail: screenshot-light.png
@@ -18,12 +18,11 @@ import LaTeX from "../components/LaTeX.astro";
 
 import { ImageComparison } from "../components/ImageComparison.tsx";
 
-import outside from "../assets/outside.mp4";
 import transformer from "../assets/transformer.webp";
 import Splat from "../components/Splat.tsx"
 import dogsDiffc from "../assets/dogs-diffc.png"
 import dogsTrue from "../assets/dogs-true.png"
-
+import overview from "../assets/fig1-overview.png"
 
 import CodeBlock from "../components/CodeBlock.astro";
 import Table from "../components/Table.astro";
@@ -33,35 +32,50 @@ export const components = {pre: CodeBlock, table: Table}
   title={frontmatter.title}
   authors={[
     {
-      name: "Roman Hauksson",
-      url: "https://roman.technology",
-      institution: "Independent",
-      notes: ["*", "†"],
+      name: "Ziyuan Jiao",
+      url: "https://scholar.google.com/citations?user=YfWhJZoAAAAJ&hl=en",
+      institution: "BIGAI",
     },
     {
-      name: "Author Two",
-      institution: "Institution Two",
-      notes: ["*", "†"],
+      name: "Yida Niu",
+      url: "https://github.com/fi6",
+      institution: "Peking University, BIGAI",
     },
     {
-      name: "Author Three",
-      institution: "Institution Three",
-      notes: ["†"],
+      name: "Zeyu Zhang",
+      url: "https://zeyuzhang.com",
+      institution: "BIGAI",
     },
     {
-      name: "Author Four",
-      institution: "Institution Four",
+      name: "Yangyang Wu",
+      url: "https://github.com/OliverWu1996",
+      institution: "Peking University",
+    },
+    {
+      name: "Yao Su",
+      url: "https://yaosu.info",
+      institution: "BIGAI",
+    },
+    {
+      name: "Yixin Zhu",
+      url: "https://yzhu.io",
+      institution: "Peking University",
+    },
+    {
+      name: "Hangxin Liu",
+      url: "https://liuhx111.github.io",
+      institution: "BIGAI",
+    },
+    {
+      name: "Song-Chun Zhu",
+      url: "https://zhusongchun.net/",
+      institution: "BIGAI",
     },
   ]}
-  conference="Conference Name"
+  conference="In Submission"
   notes={[
     {
-      symbol: "*",
-      text: "author note one",
-    },
-    {
-      symbol: "†",
-      text: "author note two",
+      text: "If you have any question, please contact jiaoziyuan at bigai dot ai.",
     },
   ]}
   links={[
@@ -71,110 +85,79 @@ export const components = {pre: CodeBlock, table: Table}
       icon: "ri:file-pdf-2-line",
     },
     {
-      name: "Code",
-      url: "https://github.com/RomanHauksson/academic-project-astro-template",
+      name: "Code (Coming Soon)",
+      url: "",
       icon: "ri:github-line",
+    },
+    {
+      name: "PDDL",
+      url: "https://github.com/",
+      icon: "ri:github-line"
     },
     {
       name: "arXiv",
       url: "",
       icon: "academicons:arxiv",
     },
-    {
-      name: "Bluesky",
-      url: "",
-      icon: "ri:bluesky-line"
-    }
   ]}
   />
 
-<Video source={outside} />
+<Figure>
+  <Image slot="figure" source={overview} altText="An exemple to illustrate the advancement of proposed SMMP framework with A-Space compared to traditional planning." />
+  <span slot="caption">An exemple to illustrate the advancement of proposed SMMP framework with A-Space compared to traditional planning.</span>
+</Figure>
 
 <HighlightedSection>
 
 ## Abstract
 
-This is a live demo for a template you can use to create a simple project page for your research paper. See the code for the template and instructions on how to use it yourself [here](https://github.com/RomanHauksson/academic-project-astro-template). It's made with the [Astro web framework](https://astro.build/) and styled with [Tailwind CSS](https://tailwindcss.com/). You write the content in [MDX](https://mdxjs.com/), which enables markdown formatting like **bold**, _italics_, and ~strikethrough~, as well as custom components like <SmallCaps>small caps.</SmallCaps>
+We present a Sequential Mobile Manipulation Planning (SMMP) framework that can solve long-horizon multi-step mobile manipulation tasks with coordinated whole-body motion, even when interacting with articulated objects. By abstracting environmental structures as kinematic models and integrating them with the robot's kinematics, we construct an Augmented Configuration Apace (A-Space) that unifies the previously separate task constraints for navigation and manipulation, while accounting for the joint reachability of the robot base, arm, and manipulated objects. This integration facilitates efficient planning within a tri-level framework: a task planner generates symbolic action sequences to model the evolution of A-Space, an optimization-based motion planner computes continuous trajectories within A-Space to achieve desired configurations for both the robot and scene elements, and an intermediate plan refinement stage selects action goals that ensure long-horizon feasibility. Our simulation studies first confirm that planning in A-Space achieves an 84.6\% higher task success rate compared to baseline methods. Validation on real robotic systems demonstrates fluid mobile manipulation involving (i) seven types of rigid and articulated objects across 17 distinct contexts, and (ii) long-horizon tasks of up to 14 sequential steps. Our results highlight the significance of modeling scene kinematics into planning entities, rather than encoding task-specific constraints, offering a scalable and generalizable approach to complex robotic manipulation.
 
 </HighlightedSection>
 
-## Figures
-
-Use the figure component to display images, videos, equations, or any other element, with an optional caption.
-
-<Figure>
-  <Image slot="figure" source={transformer} altText="Diagram of the transformer deep learning architecture." />
-  <span slot="caption">Diagram of the transformer deep learning architecture.</span>
-</Figure>
 
 ## Videos
-<Figure>
-    <YouTubeVideo slot="figure" videoId="ol5vkf9jb8M" />
-    <span slot="caption">Take a look at this YouTube video.</span>
-</Figure>
-<Figure>
-    <YouTubeVideo slot="figure" videoId="wrC0FHQCAUY" />
-    <span slot="caption">Take a look at this YouTube video.</span>
-</Figure>
-<Figure>
-    <YouTubeVideo slot="figure" videoId="Oh4533eYdJE" />
-    <span slot="caption">Take a look at this YouTube video.</span>
-</Figure>
-<Figure>
-    <YouTubeVideo slot="figure" videoId="pUeKHHS2d3k" />
-    <span slot="caption">Take a look at this YouTube video.</span>
-</Figure>
-<Figure>
-    <YouTubeVideo slot="figure" videoId="lU2401F4JMo" />
-    <span slot="caption">Take a look at this YouTube video.</span>
-</Figure>
-
-
-## Two columns
-
-Use the two columns component to display two columns of content. In this example, the first column contains a figure with a YouTube video and the second column contains a figure with a custom [React](https://react.dev/) component. By default, they display side by side, but if the screen is narrow enough (for example, on mobile), they're arranged vertically.
-
-<TwoColumns>
-  <Figure slot="left">
-    <YouTubeVideo slot="figure" videoId="wjZofJX0v4M" />
-    <span slot="caption">Take a look at this YouTube video.</span>
+### Whole-body mobile manipulation of different articulate objects.
+<div style="width: 50%;">
+  <Figure>
+      <YouTubeVideo slot="figure" videoId="ol5vkf9jb8M" />
   </Figure>
-  <Figure slot="right">
-    <Splat slot="figure" client:idle />
-    <span slot="caption">Now look at this <a href="https://en.wikipedia.org/wiki/Gaussian_splatting">Gaussian splat</a>, rendered with a React component.</span>
+</div>
+
+### Sequential mobile manipulation tasks in a household environment.
+<div style="width: 50%;">
+  <Figure>
+      <YouTubeVideo slot="figure" videoId="wrC0FHQCAUY" />
   </Figure>
-</TwoColumns>
+</div>
 
-## Heading levels
+### Whole-body mobile manipulation for tool-use tasks.
+<div style="width: 50%;">
+  <Figure>
+      <YouTubeVideo slot="figure" videoId="Oh4533eYdJE" />
+  </Figure>
+</div>
 
-Use headings to divide your content into sections.
+### Mobile manipulation planning with combined articulate object manipulation and tool-use.
+<div style="width: 50%;">
+  <Figure>
+      <YouTubeVideo slot="figure" videoId="pUeKHHS2d3k" />
+  </Figure>
+</div>
 
-### Heading 3
+### Whole-body sequential mobile manipulation planned and executed in real-time.
+<div style="width: 50%;">
+  <Figure>
+      <YouTubeVideo slot="figure" videoId="lU2401F4JMo"/>      
+  </Figure>
+</div>
 
-Go down a level to heading 3...
+## Extended Simulation Results
 
-#### Heading 4
+To demonstrate the generality and applicability of our method across diverse object structures and realistic environments, we conducted an extensive evaluation in 30 cluttered household scenes from iThor. Each scene included five articulated objects from the PartNet-Mobility dataset, replacing existing objects of the same category to preserve contextual realism. We used AO-Grasp to generate 20 candidate grasps per object and tested three new mobile manipulators. To manage the scale and complexity, we ported our AKR-based motion planner to the GPU-accelerated Curobo platform and developed a fully automated environment setup pipeline. A gallery of results is presented below.
 
-...and down again to heading 4.
 
-## LaTeX
-
-You can also add LaTeX formulas, rendered during the build process using [KaTeX](https://katex.org/) so they're quick to load for visitors of your project page. You can write them inline, like this: <LaTeX inline formula="a^2 + b^2 = c^2" />. Or, you can write them as a block:
-
-<LaTeX formula="\int_a^b f(x) dx" />
-
-## Tables
-
-You can add simple tables using [GitHub Flavored Markdown syntax](https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/organizing-information-with-tables):
-
-| Model | Accuracy | F1 score | Training time (hours) |
-| :--- | :---: | :---: | :---: |
-| BERT-base | 0.89 | 0.87 | 4.5 |
-| RoBERTa-large | 0.92 | 0.91 | 7.2 |
-| DistilBERT | 0.86 | 0.84 | 2.1 |
-| XLNet | 0.90 | 0.89 | 6.8 |
-
-## BibTeX citation
+{/* ## BibTeX citation
 
 ```bibtex
 @misc{roman2024academic,
@@ -183,4 +166,4 @@ You can add simple tables using [GitHub Flavored Markdown syntax](https://docs.g
   year = "2024",
   howpublished = "\url{https://research-template.roman.technology}",
 }
-```
+``` */}

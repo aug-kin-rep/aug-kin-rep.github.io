@@ -12,10 +12,11 @@ export default defineConfig({
   integrations: [tailwind(), icon(), mdx(), react(), svelte()],
   markdown: {
     shikiConfig: {
-      themes: {
-        light: 'github-light',
-        dark: 'github-dark',
-      },
+      theme: "github-light"
+      // themes: {
+      //   light: 'github-light',
+      //   dark: 'github-dark',
+      // },
     }
   }
 });
