@@ -1,3 +1,46 @@
+.video-group {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    justify-items: center;
+}
+
+.video-group figure {
+    width: 100%;
+    max-width: 300px; /* 비디오의 최대 너비를 설정 */
+    text-align: center;
+}
+
+.video-group video {
+    width: 100%;
+    height: auto;
+    border-radius: 15px; /* 비디오를 둥글게 만듦 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 그림자 추가 */
+}
+
+.video-group figcaption {
+    margin-top: 8px;
+    font-size: 0.9em;
+    color: #555;
+}
+
+.container {
+    max-width: 1200px; /* 데스크탑에서 최대 너비 설정 */
+    margin: 0 auto; /* 가운데 정렬 */
+    padding: 0 20px;
+}
+
+
+@media (max-width: 768px) {
+    .container {
+        max-width: 100%; /* 모바일에서는 전체 너비로 설정 */
+        padding: 0 10px;
+    }
+    .video-group {
+        grid-template-columns: repeat(3, 1fr); /* 모바일에서도 3열 유지 */
+    }
+}
+
 @media (prefers-color-scheme: dark) {
   .astro-code,
   .astro-code span {
