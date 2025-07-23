@@ -29,6 +29,7 @@ const Carousel: React.FC<CarouselProps> = ({ videos, className = '' }) => {
       <div
         data-hs-carousel={JSON.stringify({
           isAutoHeight: true,
+          isAutoPlay: true,
           loadingClasses: "opacity-0",
           dotsItemClasses: "hs-carousel-active:bg-gray-700 hs-carousel-active:border-gray-700 size-3 border border-gray-400 rounded-full cursor-pointer dark:border-neutral-600 dark:hs-carousel-active:bg-gray-500 dark:hs-carousel-active:border-gray-500",
           slidesQty: {
