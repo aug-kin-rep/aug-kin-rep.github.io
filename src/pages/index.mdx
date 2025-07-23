@@ -15,12 +15,16 @@ import Image from "../components/Image.astro";
 import TwoColumns from "../components/TwoColumns.astro";
 import YouTubeVideo from "../components/YouTubeVideo.astro";
 import LaTeX from "../components/LaTeX.astro";
+import Carousel from "../components/Carousel.tsx";
 
 import { ImageComparison } from "../components/ImageComparison.tsx";
 
 import overview from "../assets/fig1-overview.png"
 import VideoGroup from '../components/VideoGroup.tsx';
 import { videoData } from '../components/VideoGroup.tsx';
+import { embodimentVideos } from '../data/carouselVideos.ts';
+import { skillVideos } from '../data/carouselVideos.ts';
+import { sceneVideos } from '../data/carouselVideos.ts';
 
 import CodeBlock from "../components/CodeBlock.astro";
 import Table from "../components/Table.astro";
@@ -100,6 +104,7 @@ export const components = {pre: CodeBlock, table: Table}
   ]}
   />
 
+
 <Figure>
   <Image slot="figure" source={overview} altText="An exemple to illustrate the advancement of proposed SMMP framework with A-Space compared to traditional planning." />
   <span slot="caption">An exemple to illustrate the advancement of proposed SMMP framework with A-Space compared to traditional planning.</span>
@@ -136,7 +141,7 @@ We present a Sequential Mobile Manipulation Planning (SMMP) framework that can s
   </Figure>
 </div>
 
-### Mobile manipulation planning with combined articulate object manipulation and tool-use.
+### Long-horizon SMMP with combined articulate object manipulation and tool-use.
 <div style="width: 50%;">
   <Figure>
       <YouTubeVideo slot="figure" videoId="pUeKHHS2d3k" />
@@ -155,14 +160,20 @@ We present a Sequential Mobile Manipulation Planning (SMMP) framework that can s
 To demonstrate the generality and applicability of our method across diverse object structures and realistic environments, we conducted an extensive evaluation in 30 cluttered household scenes from iThor. Each scene included five articulated objects from the PartNet-Mobility dataset, replacing existing objects of the same category to preserve contextual realism. We used AO-Grasp to generate 20 candidate grasps per object and tested three new mobile manipulators. To manage the scale and complexity, we ported our AKR-based motion planner to the GPU-accelerated Curobo platform and developed a fully automated environment setup pipeline. A gallery of results is presented below.
 
 
-### Diverse Embodiments
-<VideoGroup videos={videoData.slice(0, 3)} client:load />
-
 ### Diverse Scenes
-<VideoGroup videos={videoData.slice(3, 6)} client:load />
+<Carousel 
+  videos={sceneVideos}
+  client:load
+/>
 
-### Diverse Manipulation Skills
-<VideoGroup videos={videoData.slice(6, 9)} client:load /> 
+### Diverse Embodiments and Manipulation Skills
+
+<Carousel 
+  videos={[...embodimentVideos, ...skillVideos]}
+  client:load
+/>
+
+
 
 {/* ## BibTeX citation
 
